@@ -19,7 +19,13 @@
             <img src="img/light.png" alt="">：
         </span>
         <span id="lightA"></span>
+    </div>
 
+    <div class="lightsenser">
+        <span>
+            LED開關：
+        </span>
+        <span id="tf"></span>
     </div>
 
     <script>
@@ -41,9 +47,11 @@
 
                 if(light < 500){
                     cpf.request('["digitalWrite", 7, 1]');
+                    documen.getElementById("tf").innerHTML = "開";
                 }
                 else{
                     cpf.request('["digitalWrite", 7, 0]');
+                    documen.getElementById("tf").innerHTML = "關";
                 }
 
                 // if (ind == 0) {
