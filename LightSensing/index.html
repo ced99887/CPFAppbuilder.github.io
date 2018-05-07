@@ -24,6 +24,7 @@
 
     <script>
         var light;
+        var ind = 0;
 
         setup();
 
@@ -39,8 +40,15 @@
                 document.getElementById("lightA").innerHTML = light;
                 console.log(light);
             }
-            
-            cpf.request('["digitalWrite", 7, 0]');
+
+            if (ind == 0) {
+                cpf.request('["digitalWrite", 7, 0]');
+                ind = 1;
+            }
+            else{
+                cpf.request('["digitalWrite", 7, 1]');
+                ind = 0;
+            }
 
             setTimeout(loop, 1000);
         }
