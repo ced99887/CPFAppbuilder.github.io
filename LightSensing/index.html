@@ -23,36 +23,27 @@
     </div>
 
     <script>
+        var light;
+
+        function setup() {
+            if (cpf) {
+                cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 7, "OUTPUT"]');
+            }
+        }
 
         function loop() {
             var red = 0;
             var green = 0;
             var blue = 0;
             if (cpf) {
-
-                var light;
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"]');
+                // cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"]');
                 light = cpf.get("a0");
                 document.getElementById("lightA").innerHTML = light;
                 console.log(light);
             }
+            
+            cpf.request('["digitalWrite", 7, 0]')
 
-            // if (light < 500) {
-            //     red = 255;
-            //     green = 255;
-            //     blue = 255;
-
-            //     cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
-            //     cpf.set("d7", red, green, blue);
-            // }
-            // else {
-                red = 0;
-                green = 0;
-                blue = 0;
-
-                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
-                cpf.set("d7", red, green, blue);
-            // }
             setTimeout(loop, 1000);
         }
         loop();
