@@ -37,22 +37,22 @@
                 console.log(light);
             }
 
-            if (light < 500) {
-                red = 255;
-                green = 255;
-                blue = 255;
+            // if (light < 500) {
+            //     red = 255;
+            //     green = 255;
+            //     blue = 255;
 
-                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
-                cpf.set("d7", red, green, blue);
-            }
-            else {
+            //     cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
+            //     cpf.set("d7", red, green, blue);
+            // }
+            // else {
                 red = 0;
                 green = 0;
                 blue = 0;
 
                 cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
                 cpf.set("d7", red, green, blue);
-            }
+            // }
             setTimeout(loop, 1000);
         }
         loop();
