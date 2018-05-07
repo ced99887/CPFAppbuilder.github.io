@@ -47,11 +47,11 @@
 
                 if(light < 500){
                     cpf.request('["digitalWrite", 7, 1]');
-                    // document.getElementById("tf").innerHTML = light;
+                    document.getElementById("tf").innerHTML = "開";
                 }
                 else{
                     cpf.request('["digitalWrite", 7, 0]');
-                    // document.getElementById("tf").innerHTML = light;
+                    document.getElementById("tf").innerHTML = "關";
                 }
 
                 // if (ind == 0) {
