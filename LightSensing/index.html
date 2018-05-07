@@ -41,16 +41,23 @@
                 document.getElementById("lightA").innerHTML = light;
                 console.log(light);
 
-                if (ind == 0) {
-                    cpf.request('["digitalWrite", 7, 0]');
-                    ind = 1;
-                    document.getElementById("test").innerHTML = ind;
-                }
-                else {
+                if(light < 500){
                     cpf.request('["digitalWrite", 7, 1]');
-                    ind = 0;
-                    document.getElementById("test").innerHTML = ind;
                 }
+                else{
+                    cpf.request('["digitalWrite", 7, 0]');
+                }
+
+                // if (ind == 0) {
+                //     cpf.request('["digitalWrite", 7, 0]');
+                //     ind = 1;
+                //     document.getElementById("test").innerHTML = ind;
+                // }
+                // else {
+                //     cpf.request('["digitalWrite", 7, 1]');
+                //     ind = 0;
+                //     document.getElementById("test").innerHTML = ind;
+                // }
             }
 
             setTimeout(loop, 10);
