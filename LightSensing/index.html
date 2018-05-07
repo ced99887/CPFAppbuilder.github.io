@@ -34,14 +34,15 @@
                 console.log(light);
             }
 
-            // if(light < 500){
-            //     var red = 255;
-            //     var green = 255;
-            //     var blue = 255;
+            if(light < 500){
+                var red = 255;
+                var green = 255;
+                var blue = 255;
 
-            //     cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
-            //     cpf.setChainableLed("0," + red + "," + green + "," + blue + ";");
-            // }
+                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
+                // cpf.setChainableLed("0," + red + "," + green + "," + blue + ";");
+                cpf.set("d7", red, green, blue)
+            }
             setTimeout(loop, 1000);
         }
         loop();
