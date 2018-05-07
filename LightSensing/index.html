@@ -18,7 +18,7 @@
         <span>
             <img src="img/light.png" alt="">：
         </span>
-        <span id="lightA">100</span>
+        <span id="lightA"></span>
 
     </div>
 
@@ -40,7 +40,7 @@
                 var blue = 255;
 
                 cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 7, "OUTPUT"]');
-                cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
+                cpf.setChainableLed("0," + red + "," + green + "," + blue + ";");
             }
             setTimeout(loop, 1000);
         }
