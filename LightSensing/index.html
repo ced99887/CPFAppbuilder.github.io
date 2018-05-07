@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Light Sensing</title>
 </head>
-<body>
-    <font id="title">Light Sensing</font><p><br>
 
+<body>
+
+    <font id="title">Light Sensing</font>
+    <br>
     <p id="lightA"></p>
+
+    <script>
+        // var light;
+        // cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"]');
+        // light = cpf.get("a0");
+        // document.getElementById("lightA").innerHTML = light;
+
+        function loop() {
+            if (cpf) {
+
+                var light;
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"]');
+                light = cpf.get("a0");
+                document.getElementById("lightA").innerHTML = light;
+
+                // lightdata = cpf.get("light sensor");
+                // tempdata = cpf.get("temperature sensor");
+                // celsius = toCelsius(tempdata);
+                // document.getElementById("lightvalue").innerHTML = lightdata;
+                // document.getElementById("temperaturevalue").innerHTML = celsius;
+
+            }
+            setTimeout(loop, 1000);
+        }
+        loop();
+    </script>
 </body>
+
 </html>
