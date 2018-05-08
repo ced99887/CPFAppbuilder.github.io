@@ -53,19 +53,7 @@
                     cpf.request('["digitalWrite", 7, 0]');
                     document.getElementById("tf").innerHTML = "關";
                 }
-
-                // if (ind == 0) {
-                //     cpf.request('["digitalWrite", 7, 0]');
-                //     ind = 1;
-                //     document.getElementById("test").innerHTML = ind;
-                // }
-                // else {
-                //     cpf.request('["digitalWrite", 7, 1]');
-                //     ind = 0;
-                //     document.getElementById("test").innerHTML = ind;
-                // }
             }
-
             setTimeout(loop, 1000);
         }
         loop();
