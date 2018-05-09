@@ -43,10 +43,11 @@
         var degree = 0;
         // var tempdata;
 
-        setup();
+        // setup();
 
         function loop() {
             if (cpf) {
+                cpf.setPinMode('["resetPin"] ,["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "digital", 4, "SERVO"]');
                 tempdata = cpf.get("a1");
                 celsius = toCelsius(tempdata);
                 // document.getElementById("temp").innerHTML = celsius;
