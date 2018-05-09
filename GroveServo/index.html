@@ -39,17 +39,20 @@
         setup();
 
         function loop() {
-            tempdata = cpf.get("a1");
-            celsius = toCelsius(tempdata);
-            document.getElementById("temp").innerHTML = celsius;
+            if (cpf) {
+                tempdata = cpf.get("a1");
+                celsius = toCelsius(tempdata);
+                document.getElementById("temp").innerHTML = celsius;
 
-            if (celsius >= -30 && celsius <= 50) {
-                degree = Math.floor((180 / 80) * celsius + 67.5); // 30 * 2.25 = 67.5
-                document.getElementById("pointer").style.transform = "rotate(" + degree + "deg)";
-                document.getElementById("degree").innerHTML = degree;
-                cpf.request('["analogWrite", 4' + Math.abs(degree - 100) + ']');
-                // cpf.request('["digitalWrite", 4' + Math.abs(degree - 100) + ']');
+                if (celsius >= -30 && celsius <= 50) {
+                    degree = Math.floor((180 / 80) * celsius + 67.5); // 30 * 2.25 = 67.5
+                    document.getElementById("pointer").style.transform = "rotate(" + degree + "deg)";
+                    document.getElementById("degree").innerHTML = degree;
+                    cpf.request('["analogWrite", 4' + Math.abs(degree - 100) + ']');
+                    // cpf.request('["digitalWrite", 4' + Math.abs(degree - 100) + ']');
+                }
             }
+
 
 
             // cpf.request('["servo_pos_speed", 4, 60]');
