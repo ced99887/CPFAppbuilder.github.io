@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <title>指針溫度計</title>
 </head>
 
@@ -16,12 +18,16 @@
     <div class="container">
 
         <div class="col-xs-12">
+
             <div class="images">
-                <img src="img/thermometer.png" alt="" id="thermometer">
-                <img src="img/pointer.png" alt="" id="pointer">
+                <img id="thermometer" src="img/thermometer.png">
+                <img id="pointer" src="img/pointer.png">
             </div>
+
         </div>
+
         <br>
+
         <h3>
             Degree：
             <span id="degree"></span>º
@@ -35,7 +41,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js">
         var celsius = 0;
         var degree = 0;
-        var tempdata;
+        // var tempdata;
 
         setup();
 
@@ -43,8 +49,8 @@
             if (cpf) {
                 tempdata = cpf.get("a1");
                 celsius = toCelsius(tempdata);
-                document.getElementById("temp").innerHTML = celsius;
-                // document.getElementById("temp").innerHTML = 20;
+                // document.getElementById("temp").innerHTML = celsius;
+                document.getElementById("temp").innerHTML = tempdata;
 
                 if (celsius >= -30 && celsius <= 50) {
                     degree = Math.floor((180 / 80) * celsius + 67.5); // 30 * 2.25 = 67.5
