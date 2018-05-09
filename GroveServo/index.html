@@ -123,7 +123,7 @@
             if (cpf) {
                 tempdata = cpf.get("temperature sensor");
                 celsius = toCelsius(tempdata);
-                document.getElementById("temp").innerHTML = celsius;
+                document.getElementById("temp").innerHTML = celsius - 30;
                 if (celsius >= -30 && celsius <= 50) { //一般溫度計溫度範圍
                     degree = Math.floor((180 / 80) * celsius + 67.5);
                     document.getElementById("pointer").style.transform = "rotate(" + degree + "deg)";
