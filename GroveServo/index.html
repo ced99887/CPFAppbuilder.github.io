@@ -41,10 +41,10 @@
 
         function loop() {
             if (cpf) {
-                // tempdata = cpf.get("a1");
-                // celsius = toCelsius(tempdata);
-                // document.getElementById("temp").innerHTML = celsius;
-                document.getElementById("temp").innerHTML = 20;
+                tempdata = cpf.get("a1");
+                celsius = toCelsius(tempdata);
+                document.getElementById("temp").innerHTML = celsius;
+                // document.getElementById("temp").innerHTML = 20;
 
                 if (celsius >= -30 && celsius <= 50) {
                     degree = Math.floor((180 / 80) * celsius + 67.5); // 30 * 2.25 = 67.5
