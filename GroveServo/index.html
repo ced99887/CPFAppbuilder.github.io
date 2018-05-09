@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- <h1>指針溫度計</h1> -->
+    <h1>指針溫度計</h1>
 
     <div class="container">
 
@@ -52,12 +52,12 @@
                 celsius = toCelsius(tempdata);
                 document.getElementById("temp").innerHTML = celsius;
 
-                // if (celsius >= -30 && celsius <= 50) {
-                //     degree = Math.floor((180 / 80) * celsius + 67.5);
-                //     document.getElementById("pointer").style.transform = "rotate(" + degree + "deg)";
-                //     document.getElementById("degree").innerHTML = degree;
-                //     cpf.request('["analogWrite", 4' + Math.abs(degree - 180) + ']');
-                // }
+                if (celsius >= -30 && celsius <= 50) {
+                    degree = Math.floor((180 / 80) * celsius + 67.5);
+                    document.getElementById("pointer").style.transform = "rotate(" + degree + "deg)";
+                    document.getElementById("degree").innerHTML = degree;
+                    cpf.request('["analogWrite", 4' + Math.abs(degree - 180) + ']');
+                }
             }
 
             setTimeout(loop, 1000);
