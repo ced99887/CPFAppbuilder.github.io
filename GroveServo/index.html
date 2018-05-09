@@ -53,11 +53,6 @@
                 }
             }
 
-
-
-            // cpf.request('["servo_pos_speed", 4, 60]');
-
-
             setTimeout(loop, 1000);
         }
         loop();
@@ -79,7 +74,9 @@
                 //180度
                 // cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 4, "SERVO"]');
                 // cpf.request('["servo_pos_speed", 4, 60]');
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "digital", 4, "SERVO"]')
+                // cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "digital", 4, "SERVO"]')
+                cpf.setPinMode('["resetPin"] ,["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "digital", 4, "SERVO"]');
+
             }
         }
     </script>
