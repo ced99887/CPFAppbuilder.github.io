@@ -71,9 +71,16 @@
         function bee() {
             console.log('BEE');
             if (cpf) {
-                cpf.request('["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300]');
+                cpf.request('["tone_play", 6, 392, 200],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300]');
+                cpf.request('["tone_play", 6, 349, 200],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300]');
+                cpf.request('["tone_play", 6, 261, 200],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 200],["sleep", 300],,["tone_play", 6, 392, 200],["sleep", 300],["tone_play", 6, 392, 200],["sleep", 300]');
+                cpf.request('["tone_play", 6, 392, 200],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300]');
+                cpf.request('["tone_play", 6, 349, 200],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300]');
+                cpf.request('["tone_play", 6, 261, 200],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 392, 200],["sleep", 300],,["tone_play", 6, 261, 200]');
             }
         }
+
+        // Sol Mi Mi  Fa Re Re  Do Re Mi Fa Sol Sol  Sol Mi Mi  Fa Re Re  Do Mi Sol Sol Do
 
         //261 - Do
         //293 - Re
