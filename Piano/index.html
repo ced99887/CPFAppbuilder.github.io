@@ -5,28 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Piano</title>
 </head>
 
 <body>
-
+    <div class="container">
+        <button class="pbtn" id="do" onclick="ckevent()">
+            Do
+        </button>
+        <button class="pbtn" id="re">
+            Re
+        </button>
+        <button class="pbtn" id="mi">
+            Mi
+        </button>
+        <button class="pbtn" id="fa">
+            Fa
+        </button>
+        <button class="pbtn" id="so">
+            So
+        </button>
+        <button class="pbtn" id="la">
+            La
+        </button>
+        <button class="pbtn" id="si">
+            Si
+        </button>
+        <button class="pbtn" id="hdo">
+            Do
+        </button>
+    </div>
+    Sol Mi Mi Fa Re Re Do Re Mi Fa Sol Sol Sol Sol Mi Mi Fa Re Re Do Mi Sol Sol Do
 
 
 
     <script>
         setup();
 
-        function loop() {
-            if (cpf) {
-                cpf.request('["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 349, 523]');
-            }
-            setTimeout(loop, 1000);
-        }
-        loop();
+        // function loop() {
+        //     if (cpf) {
+        //         // cpf.request(
+        //         //     '["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 523, 300]'
+        //         // );
+
+        //     }
+        //     setTimeout(loop, 1000);
+        // }
+        // loop();
 
         function setup() {
             if (cpf) {
                 cpf.setPinMode('["resetPin"],["setPinMode", "digital", 6, "TONE"] ');
+            }
+        }
+
+        function ckevent() {
+            if(cpf) {
+                cpf.request(
+                    '["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 523, 300]'
+                );
             }
         }
     </script>
