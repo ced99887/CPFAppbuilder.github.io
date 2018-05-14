@@ -1,7 +1,7 @@
 .pbtn {
     position: relative;
     margin: 50px 0px;
-    /* width: 40px; */
+    width: 12.5%;
     height: 200px;
     border: 1px solid #000;
     float: left;
@@ -12,4 +12,9 @@
 .pbtn:active {
     top: 3px;
     /* left: 3px; */
+}
+
+.wrap {
+    width: 100%;
+    padding: 0 2%;
 }
