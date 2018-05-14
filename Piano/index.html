@@ -6,54 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <title>Piano</title>
 </head>
 
 <body>
     <div class="container">
-        <button class="pbtn" id="do" onclick="ckevent()">
+        <button class="pbtn col-sm-1 col-md-1 offset-sm-1" id="do" onclick="ckevent(this)" name="261">
             Do
         </button>
-        <button class="pbtn" id="re">
+        <button class="pbtn col-sm-1 col-md-1" id="re" onclick="ckevent(this)" name="293">
             Re
         </button>
-        <button class="pbtn" id="mi">
+        <button class="pbtn col-sm-1 col-md-1" id="mi" onclick="ckevent(this)" name="329">
             Mi
         </button>
-        <button class="pbtn" id="fa">
+        <button class="pbtn col-sm-1 col-md-1" id="fa" onclick="ckevent(this)" name="349">
             Fa
         </button>
-        <button class="pbtn" id="so">
+        <button class="pbtn col-sm-1 col-md-1" id="so" onclick="ckevent(this)" name="392">
             So
         </button>
-        <button class="pbtn" id="la">
+        <button class="pbtn col-sm-1 col-md-1" id="la" onclick="ckevent(this)" name="440">
             La
         </button>
-        <button class="pbtn" id="si">
+        <button class="pbtn col-sm-1 col-md-1" id="si" onclick="ckevent(this)" name="493">
             Si
         </button>
-        <button class="pbtn" id="hdo">
+        <button class="pbtn col-sm-1 col-md-1" id="hdo" onclick="ckevent(this)" name="523">
             Do
         </button>
     </div>
-    Sol Mi Mi Fa Re Re Do Re Mi Fa Sol Sol Sol Sol Mi Mi Fa Re Re Do Mi Sol Sol Do
+    <!-- Sol Mi Mi Fa Re Re Do Re Mi Fa Sol Sol Sol Sol Mi Mi Fa Re Re Do Mi Sol Sol Do -->
 
 
 
     <script>
         setup();
-
-        // function loop() {
-        //     if (cpf) {
-        //         // cpf.request(
-        //         //     '["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 523, 300]'
-        //         // );
-
-        //     }
-        //     setTimeout(loop, 1000);
-        // }
-        // loop();
 
         function setup() {
             if (cpf) {
@@ -61,13 +51,31 @@
             }
         }
 
-        function ckevent() {
+        function ckevent(event) {
+            var a = event.name;
+
+            console.log(a);
+            console.log(event.id);
+
             if(cpf) {
-                cpf.request(
-                    '["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 523, 300]'
-                );
+                cpr.request('["tone_play", 6, 261, 300]');
             }
+
+            // if(cpf) {
+            //     cpf.request(
+            //         '["tone_play", 6, 261, 300],["sleep", 300],["tone_play", 6, 293, 300],["sleep", 300],["tone_play", 6, 329, 300],["sleep", 300],["tone_play", 6, 349, 300],["sleep", 300],["tone_play", 6, 392, 300],["sleep", 300],["tone_play", 6, 440, 300],["sleep", 300],["tone_play", 6, 493, 300],["sleep", 300],["tone_play", 6, 523, 300]'
+            //     );
+            // }
         }
+
+        //261 - Do
+        //293 - Re
+        //329 - Mi
+        //349 - Fa
+        //392 - So
+        //440 - La
+        //493 - Si
+        //523 - Do
     </script>
 </body>
 
