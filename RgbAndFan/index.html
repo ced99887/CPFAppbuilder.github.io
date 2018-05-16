@@ -61,8 +61,11 @@
             cpf.request(`["analogWrite", 6, 0]`);
             cpf.request(`["grove_setColorRGB", 0, 0, 0, 0]`);
             light = 0;
-            onoff = false;
+            onoff = !onoff;
             console.log("開關：" + onoff);
+            if (onoff) {
+                loop();
+            }
         }
 
         function setup() {
