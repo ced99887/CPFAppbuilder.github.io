@@ -11,19 +11,32 @@
 <body>
 
     <script>
+        var light = 255;
+
         setup();
 
         function loop() {
             if (cpf) {
-                cpf.request('["analog", 6, 120]');
+                if (light > 0) {
+                    light = light - 5;
+                }
+                else{
+                    if(light < 0) {
+                        light = 0;
+                    }
+                    light = light + 5;
+                }
+                // cpf.request('["analog", 6, 120]');
+                cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
             }
-            setTimeout(loop, 1000);
+            setTimeout(loop, 100);
         }
         loop();
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode", "digital", 6, "PWM"]');
+                // cpf.setPinMode('["resetPin"],["setPinMode", "digital", 6, "PWM"]');
+                cpf.setPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 1]');
             }
         }
 
