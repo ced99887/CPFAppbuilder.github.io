@@ -19,16 +19,18 @@
 
     <script>
         var light = 255;
-        var state = true;
+        var breath = true;
+        var onofff = true;
 
         setup();
 
         function loop() {
             if (cpf) {
-                if (state) {
+                if(onoff){
+                    if (breath) {
                     light = light - 15;
                     if(light <= 0) {
-                        state = !state;
+                        breath = !breath;
                     }
                 }
                 else{
@@ -37,13 +39,17 @@
                     }
                     light = light + 15;
                     if(light >= 255) {
-                        state = !state;
+                        breath = !breath;
                     }
                 }
                 cpf.request(`["analogWrite", 6, ${light}]`);
                 cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
                 console.log(light);
                 console.log(`["analogWrite", 6, ${light}]`);
+                }
+                
+
+
             }
             setTimeout(loop, 100);
         }
@@ -53,6 +59,7 @@
             cpf.initSpeechRecognition("cmn-Hant-TW");
                 cpf.request(`["analogWrite", 6, 0`);
                 cpf.request(`["grove_setColorRGB", 0, 0, 0, 0]`);
+                onoff = !onoff;
         }
 
         function setup() {
