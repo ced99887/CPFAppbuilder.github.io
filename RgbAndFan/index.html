@@ -43,8 +43,8 @@
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"],["setPinMode", "digital", 6, "PWM"]');
-                cpf.setPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 1]');
+                // cpf.setPinMode('["resetPin"],["setPinMode", "digital", 6, "PWM"]');
+                cpf.setPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 6, "PWM"]');
             }
         }
 
