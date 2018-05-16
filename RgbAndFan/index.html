@@ -12,19 +12,26 @@
 
     <script>
         var light = 255;
+        var state = true;
 
         setup();
 
         function loop() {
             if (cpf) {
-                if (light > 0) {
+                if (state) {
                     light = light - 5;
+                    if(light <= 0) {
+                        state = !state;
+                    }
                 }
                 else{
                     if(light < 0) {
                         light = 0;
                     }
                     light = light + 5;
+                    if(light >= 255) {
+                        state = !state;
+                    }
                 }
                 // cpf.request('["analog", 6, 120]');
                 cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
