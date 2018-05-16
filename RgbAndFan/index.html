@@ -26,31 +26,32 @@
 
         function loop() {
             if (cpf) {
-                while (onoff) {
-                    if (breath) {
-                        light = light - 15;
-                        if (light <= 0) {
-                            breath = !breath;
-                        }
+                if (breath) {
+                    light = light - 15;
+                    if (light <= 0) {
+                        breath = !breath;
                     }
-                    else {
-                        if (light < 0) {
-                            light = 0;
-                        }
-                        light = light + 15;
-                        if (light >= 255) {
-                            breath = !breath;
-                        }
-                    }
-                    cpf.request(`["analogWrite", 6, ${light}]`);
-                    cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
-                    console.log(light);
-                    // console.log(`["analogWrite", 6, ${light}]`);
                 }
+                else {
+                    if (light < 0) {
+                        light = 0;
+                    }
+                    light = light + 15;
+                    if (light >= 255) {
+                        breath = !breath;
+                    }
+                }
+                cpf.request(`["analogWrite", 6, ${light}]`);
+                cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
+                console.log(light);
+                // console.log(`["analogWrite", 6, ${light}]`);
             }
+
             setTimeout(loop, 100);
         }
-        // loop();
+        if (onoff) {
+            loop();
+        }
 
         function btnclick() {
             // cpf.initSpeechRecognition("cmn-Hant-TW");
