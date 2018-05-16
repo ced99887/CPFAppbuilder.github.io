@@ -35,40 +35,35 @@
             console.log("開關：" + onoff);
         }
 
-        if (cpf) {
-            if (onoff) {
+
+        function loop() {
+            if (cpf) {
                 console.log("開關：" + onoff);
-                function loop() {
-                    if (cpf) {
-                        if (breath) {
-                            light = light - 15;
-                            if (light <= 0) {
-                                breath = !breath;
-                            }
-                        }
-                        else {
-                            if (light < 0) {
-                                light = 0;
-                            }
-                            light = light + 15;
-                            if (light >= 255) {
-                                breath = !breath;
-                            }
-                        }
-                        cpf.request(`["analogWrite", 6, ${light}]`);
-                        cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
-                        console.log(light);
+                if (breath) {
+                    light = light - 15;
+                    if (light <= 0) {
+                        breath = !breath;
                     }
-
-                    setTimeout(loop, 100);
                 }
-                if (onoff) {
-                    loop();
+                else {
+                    if (light < 0) {
+                        light = 0;
+                    }
+                    light = light + 15;
+                    if (light >= 255) {
+                        breath = !breath;
+                    }
                 }
+                cpf.request(`["analogWrite", 6, ${light}]`);
+                cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
+                console.log(light);
             }
+
+            setTimeout(loop, 100);
         }
-
-
+        if (onoff) {
+            loop();
+        }
 
         function setup() {
             if (cpf) {
