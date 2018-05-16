@@ -33,7 +33,7 @@
                         state = !state;
                     }
                 }
-                cpf.request('["analog", 6, 120]');
+                cpf.request(`["analog", 6, ${light}]`);
                 cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
             }
             setTimeout(loop, 100);
