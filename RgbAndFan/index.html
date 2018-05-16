@@ -26,15 +26,6 @@
 
         setup();
 
-        function btnclick() {
-            // cpf.initSpeechRecognition("cmn-Hant-TW");
-            cpf.request(`["analogWrite", 6, 0]`);
-            cpf.request(`["grove_setColorRGB", 0, 0, 0, 0]`);
-            light = 0;
-            onoff = false;
-            console.log("開關：" + onoff);
-        }
-
 
         function loop() {
             if (cpf) {
@@ -59,11 +50,20 @@
                 console.log(light);
             }
 
-            setTimeout(loop, 100);
+            if (onoff) {
+                console.log("setTimeout");
+                setTimeout(loop, 100);
+            }
         }
-        // if (onoff) {
-        //     loop();
-        // }
+
+        function btnclick() {
+            // cpf.initSpeechRecognition("cmn-Hant-TW");
+            cpf.request(`["analogWrite", 6, 0]`);
+            cpf.request(`["grove_setColorRGB", 0, 0, 0, 0]`);
+            light = 0;
+            onoff = false;
+            console.log("開關：" + onoff);
+        }
 
         function setup() {
             if (cpf) {
