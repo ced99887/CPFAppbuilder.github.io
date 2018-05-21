@@ -32,7 +32,7 @@
                 // for (i = 0; i < 255; i += 15) {
                 //     cpf.request(`["analogWrite", 6, 255`);
                 // }
-                cpf.request(`["analogWrite", 6, 255`);
+                cpf.request(`["analogWrite", 6, 255]`);
             }
             else if (Result.includes("好冷") || Result.includes("如果妳冷") || Result.includes("關")) {
                 document.getElementById("words").innerHTML = Result;
