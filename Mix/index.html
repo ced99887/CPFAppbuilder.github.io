@@ -54,11 +54,8 @@
                 cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開啟電燈關閉電扇關閉小夜燈", 1, 1);
                 console.log("早安");
                 cpf.request('["digitalWrite", 5, 0]');
-                console.log("CCC");
                 cpf.request('["analogWrite", 6, 0]');
-                console.log("AAA");
-                Cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
-                console.log("BBB");
+                cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
 
             }
         }
