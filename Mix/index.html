@@ -27,14 +27,17 @@
         function GetRecognizeResult(Result, Type) {
             if (Result.includes("好熱") || Result.includes("我知道妳熱") || Result.includes("開")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "開", 1, 2);
-                for (i = 0; i < 255; i += 15) {
-                    cpf.request(`["analogWrite", 6, 255`);
-                }
+                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", "1", "2");
+                console.log("電風扇快轉");
+                // for (i = 0; i < 255; i += 15) {
+                //     cpf.request(`["analogWrite", 6, 255`);
+                // }
+                cpf.request(`["analogWrite", 6, 255`);
             }
             else if (Result.includes("好冷") || Result.includes("如果妳冷") || Result.includes("關")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關電扇了", 1, 1);
+                console.log("123木頭人");
                 cpf.request('["analogWrite", 6, 0]');
             }
         }
