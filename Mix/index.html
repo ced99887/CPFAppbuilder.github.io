@@ -27,24 +27,34 @@
         function GetRecognizeResult(Result, Type) {
             if (Result.includes("好熱") || Result.includes("我知道妳熱") || Result.includes("開")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", "1", "2");
-                console.log("電風扇快轉");
-                // for (i = 0; i < 255; i += 15) {
-                //     cpf.request(`["analogWrite", 6, 255`);
-                // }
-                cpf.request(`["analogWrite", 6, 255]`);
+                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", 1, 2);
+                for (i = 0; i < 255; i += 15) {
+                    cpf.request(`["analogWrite", 6, ${i}]`);
+                }
+                // cpf.request(`["analogWrite", 6, 255]`);
             }
             else if (Result.includes("好冷") || Result.includes("如果妳冷") || Result.includes("關")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關電扇了", 1, 1);
-                console.log("123木頭人");
                 cpf.request('["analogWrite", 6, 0]');
+            }
+
+            if(Result.includes("睡覺") || Result.includes("晚安")) {
+                document.getElementById("words").innerHTML = Result;
+                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關閉電燈開啟電扇開啟小夜燈");
+                cpf.request('["digitalWrite", 5, 0]');
+                for(i = 0; i <= 255; i++){
+                    cpf.request(`["analogWrite", 6, ${i}]`);
+                    cpf.request(`["grove_setColorRGB", 0, ${i}, ${i}, ${i}]`);
+                }
             }
         }
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 6, "PWM"]');
+                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 6, "PWM"], ["grove_rgblcd_begin", 16, 2],["grove_newChainableLED", 7, 8, 1], ["setPinMode", "digital", 5, "OUTPUT"]');
+                cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]');
+                cpf.request('["grove_rgblcd_clear"]');
             }
         }
     </script>
