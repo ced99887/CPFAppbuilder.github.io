@@ -41,7 +41,7 @@
 
             if(Result.includes("睡覺") || Result.includes("晚安")) {
                 document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關閉電燈開啟電扇開啟小夜燈");
+                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關閉電燈開啟電扇開啟小夜燈", 1, 2);
                 cpf.request('["digitalWrite", 5, 0]');
                 for(i = 0; i <= 255; i++){
                     cpf.request(`["analogWrite", 6, ${i}]`);
