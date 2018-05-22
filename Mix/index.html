@@ -25,7 +25,7 @@
         });
 
         function GetRecognizeResult(Result, Type) {
-            if (Result.includes("好熱") || Result.includes("我知道妳熱") || Result.includes("開")) {
+            if (Result.includes("好熱") || Result.includes("我知道妳熱")) {
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", 1, 2);
                 for (i = 0; i < 255; i += 15) {
