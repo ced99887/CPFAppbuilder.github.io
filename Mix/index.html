@@ -63,7 +63,7 @@
 
             if (Result.includes("開電扇")) {
                 var r = ((Math.random() * 10) + 1);
-
+                console.log(r);
                 if (r % 2 == 0) {
                     document.getElementById("words").innerHTML = "美送開";
                     cpf.SetSpeech("On", "cmn-Hant-TW", "美送開", 1, 1);
