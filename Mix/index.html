@@ -37,6 +37,8 @@
                 document.getElementById("words").innerHTML = Result;
                 cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關電扇了", 1, 1);
                 cpf.request('["analogWrite", 6, 0]');
+                cpf.request('["digitalWrite", 5, 0]');
+                cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
             }
 
             if (Result.includes("睡覺") || Result.includes("晚安")) {
@@ -57,6 +59,24 @@
                 cpf.request('["analogWrite", 6, 0]');
                 cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
 
+            }
+
+            if (Result.includes("開電扇")) {
+                var r = ((Math.random() * 10) + 1);
+
+                if (r % 2 == 0) {
+                    document.getElementById("words").innerHTML = "美送開";
+                    cpf.SetSpeech("On", "cmn-Hant-TW", "美送開", 1, 1);
+                    console.log("美送開");
+                }
+                else {
+                    document.getElementById("words").innerHTML = "好啊";
+                    cpf.SetSpeech("On", "cmn-Hant-TW", "好啊", 1, 1);
+                    console.log("好啊");
+                    for (i = 0; i < 255; i += 15) {
+                        cpf.request(`["analogWrite", 6, ${i}]`);
+                    }
+                }
             }
         }
 
