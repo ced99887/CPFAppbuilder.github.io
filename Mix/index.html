@@ -70,6 +70,7 @@
                         document.getElementById("words").innerHTML = "美送開";
                         cpf.SetSpeech("On", "cmn-Hant-TW", "美送開", 1, 1);
                         console.log("美送開");
+                        cpf.request(`["analogWrite", 6, 0]`);
                     }
                     else {
                         document.getElementById("words").innerHTML = "好啊";
@@ -80,16 +81,25 @@
                         }
                     }
                 }
+                if (Result.includes("叫你開")) {
+                    document.getElementById("words").innerHTML = "叫你開";
+                    cpf.SetSpeech("On", "cmn-Hant-TW", "求我啊", 1, 1);
+                }
+                if (Result.includes("拜託")) {
+                    document.getElementById("words").innerHTML = "拜託";
+                    cpf.SetSpeech("On", "cmn-Hant-TW", "不要", 1, 1);
+                }
 
                 if (Result.includes("開燈")) {
                     document.getElementById("words").innerHTML = "甚麼顏色";
+                    cpf.SetSpeech("On", "cmn-Hant-TW", "甚麼顏色", 1, 1);
                     lightstatus = !lightstatus;
                 }
             }
             else {
                 if (Result.includes("紅色")) {
                     document.getElementById("words").innerHTML = "紅色";
-                    cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
+                    cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
                     lightstatus = !lightstatus;
                 }
                 else if (Result.includes("綠色")) {
