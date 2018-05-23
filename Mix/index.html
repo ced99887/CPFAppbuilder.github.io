@@ -91,22 +91,18 @@
             if (Result.includes("開燈")) {
                 document.getElementById("words").innerHTML = "甚麼顏色";
                 cpf.SetSpeech("On", "cmn-Hant-TW", "甚麼顏色", 1, 1);
-                lightstatus = !lightstatus;
             }
             if (Result.includes("紅色")) {
                 document.getElementById("words").innerHTML = "紅色";
                 cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
-                lightstatus = !lightstatus;
             }
             else if (Result.includes("綠色")) {
                 document.getElementById("words").innerHTML = "綠色";
                 cpf.request('["grove_setColorRGB", 0, 0, 255, 0]');
-                lightstatus = !lightstatus;
             }
             else if (Result.includes("藍色")) {
                 document.getElementById("words").innerHTML = "藍色";
                 cpf.request('["grove_setColorRGB", 0, 0, 0, 255]');
-                lightstatus = !lightstatus;
             }
         }
 
