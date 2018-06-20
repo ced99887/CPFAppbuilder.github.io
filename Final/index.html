@@ -23,7 +23,7 @@
         var shock; // 震動
         var gas_val = 1000; // 氣體濃度標準
         var light = 0;
-        var status = false;
+        var status = true;
 
         setup();
 
@@ -45,21 +45,21 @@
                 }
                 // cpf.request(`["analogWrite", 6, 255]`);
 
-                if (light >= 255) {
-                    status = !status;
-                    ligth = 255;
-                }
-                else if (light <= 0) {
-                    status = !status;
-                    light = 0;
-                }
-
                 if (status) {
                     light += 35;
 
+                    if (light >= 255) {
+                        status = false;
+                        ligth = 255;
+                    }
                 }
                 else {
                     light -= 35;
+
+                    if (light <= 0) {
+                        status = true;
+                        ligth = 0;
+                    }
                 }
 
                 console.log(`${status} + ${light}`);
