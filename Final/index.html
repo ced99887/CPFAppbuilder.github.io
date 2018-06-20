@@ -62,6 +62,8 @@
                     light -= 35;
                 }
 
+                console.log(`${status} + ${light}`);
+
                 cpf.request(`["analogWrite", 6, ${light}]`);
             }
 
