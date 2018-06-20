@@ -21,6 +21,7 @@
     <script>
         var gas; // 氣體
         var shock; // 震動
+        var gas_val; // 氣體濃度
 
         setup();
 
@@ -31,9 +32,17 @@
                 shock = cpf.get("a1");
                 console.log(shock);
 
+                gas_val = gas;
+
                 document.getElementById("gas").innerHTML = gas;
                 document.getElementById("shock").innerHTML = shock;
-                
+
+
+                if (gas >= gas_val) {
+                    for (var i = 0; i < 10; i++) {
+                        cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
+                    }
+                }
             }
 
             setTimeout(loop, 1000);
@@ -47,7 +56,7 @@
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 // A1 Grove壓電式振動傳感器 
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"]');
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"]');
             }
 
         }
