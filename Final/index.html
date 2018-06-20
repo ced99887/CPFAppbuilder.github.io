@@ -52,6 +52,8 @@
                         status = false;
                         ligth = 255;
                     }
+
+                    console.log(`${status} + ${light} ++`);
                 }
                 else {
                     light -= 35;
@@ -60,9 +62,11 @@
                         status = true;
                         ligth = 0;
                     }
+
+                    console.log(`${status} + ${light} --`);
                 }
 
-                console.log(`${status} + ${light}`);
+                // console.log(`${status} + ${light}`);
 
                 cpf.request(`["analogWrite", 6, ${light}]`);
             }
