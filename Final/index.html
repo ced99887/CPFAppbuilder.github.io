@@ -28,14 +28,14 @@
         function loop() {
             if (cpf) {
                 gas = cpf.get("a0");
-                console.log(gas);
+                // console.log(gas);
                 shock = cpf.get("a1");
-                console.log(shock);
+                // console.log(shock);
 
                 document.getElementById("gas").innerHTML = gas;
                 document.getElementById("shock").innerHTML = shock;
 
-
+                console.log("gas_val：" + gas_val);
                 if (gas >= gas_val) {
                     for (var i = 0; i < 10; i++) {
                         cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
