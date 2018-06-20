@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <title>指針溫度計</title>
+</head>
+
+<body>
+    <div id="gas"></div>
+
+    <div id="shock"></div>
+
+    <script>
+        var gas; // 氣體
+        var shock; // 震動
+
+        setup();
+
+        function loop() {
+            if (cpf) {
+                gas = cpf.get("a0");
+                gas = cpf.get("d2");
+
+                document.getElementById("gas").innerHTML = gas;
+                document.getElementById("shock").innerHTML = shock;
+                
+            }
+
+            setTimeout(loop, 1000);
+        }
+        loop();
+
+
+
+
+        function setup() {
+            if (cpf) {
+                // A0 Grove-氣體傳感器(MQ5)
+                // D2 Grove壓電式振動傳感器 
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 2,"INPUT"]');
+            }
+
+        }
+
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
