@@ -46,21 +46,25 @@
                 // cpf.request(`["analogWrite", 6, 255]`);
 
                 if (status) {
-                    light += 35;
+                    light = light + 51;
 
-                    if (light >= 255) {
-                        status = false;
+                    if (light > 255) {
                         ligth = 255;
+                    }
+                    if(light >= 255){
+                        status = false;
                     }
 
                     console.log(`${status} + ${light} ++`);
                 }
                 else {
-                    light -= 35;
+                    light = light - 51;
 
-                    if (light <= 0) {
-                        status = true;
+                    if (light < 0) {
                         ligth = 0;
+                    }
+                    if(light >= 255){
+                        status = true;
                     }
 
                     console.log(`${status} + ${light} --`);
