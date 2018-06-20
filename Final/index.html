@@ -22,6 +22,8 @@
         var gas; // 氣體
         var shock; // 震動
         var gas_val = 1000; // 氣體濃度標準
+        var light = 0;
+        var status = false;
 
         setup();
 
@@ -41,7 +43,26 @@
                         cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
                     }
                 }
-                cpf.request(`["analogWrite", 6, 255]`);
+                // cpf.request(`["analogWrite", 6, 255]`);
+
+                if (light >= 255) {
+                    status = !status;
+                    ligth = 255;
+                }
+                else if (light <= 0) {
+                    status = !status;
+                    light = 0;
+                }
+
+                if (status) {
+                    ligth += 35;
+
+                }
+                else {
+                    light -= 35;
+                }
+
+                cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
             }
 
             setTimeout(loop, 1000);
