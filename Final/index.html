@@ -22,8 +22,8 @@
         var gas; // 氣體
         var shock; // 震動
         var gas_val = 1000; // 氣體濃度標準
-        var light = 0;
-        var status = true;
+        var speed = 0;
+        var s = true;
 
         setup();
 
@@ -45,34 +45,30 @@
                 }
                 // cpf.request(`["analogWrite", 6, 255]`);
 
-                if (status) {
-                    light = light + 51;
+                if (s) {
+                    speed = speed + 51;
 
-                    if (light > 255) {
-                        ligth = 255;
-                    }
-                    if(light >= 255){
-                        status = false;
+                    if (speed >= 255) {
+                        speed = 255;
+                        s = false;
                     }
 
-                    console.log(`${status} + ${light} ++`);
+                    console.log(`${s} + ${speed} ++`);
                 }
                 else {
-                    light = light - 51;
+                    speed = speed - 51;
 
-                    if (light < 0) {
-                        ligth = 0;
-                    }
-                    if(light <= 0){
-                        status = true;
+                    if (speed <= 0) {
+                        speed = 0;
+                        s = true;
                     }
 
-                    console.log(`${status} + ${light} --`);
+                    console.log(`${s} + ${speed} --`);
                 }
 
-                // console.log(`${status} + ${light}`);
+                // console.log(`${s} + ${speed}`);
 
-                cpf.request(`["analogWrite", 6, ${light}]`);
+                cpf.request(`["analogWrite", 6, ${speed}]`);
             }
 
             setTimeout(loop, 1000);
