@@ -13,8 +13,9 @@
 </head>
 
 <body>
+    <h3>GAS</h3>
     <div id="gas"></div>
-
+    <h3>SHOCK</h3>
     <div id="shock"></div>
 
     <script>
@@ -26,7 +27,9 @@
         function loop() {
             if (cpf) {
                 gas = cpf.get("a0");
-                gas = cpf.get("d2");
+                console.log(gas);
+                shock = cpf.get("a1");
+                console.log(shock);
 
                 document.getElementById("gas").innerHTML = gas;
                 document.getElementById("shock").innerHTML = shock;
@@ -43,8 +46,8 @@
         function setup() {
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
-                // D2 Grove壓電式振動傳感器 
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 2,"INPUT"]');
+                // A1 Grove壓電式振動傳感器 
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"]');
             }
 
         }
