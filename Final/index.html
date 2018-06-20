@@ -21,7 +21,7 @@
     <script>
         var gas; // 氣體
         var shock; // 震動
-        var gas_val; // 氣體濃度
+        var gas_val = 1000; // 氣體濃度標準
 
         setup();
 
@@ -31,8 +31,6 @@
                 console.log(gas);
                 shock = cpf.get("a1");
                 console.log(shock);
-
-                gas_val = gas;
 
                 document.getElementById("gas").innerHTML = gas;
                 document.getElementById("shock").innerHTML = shock;
