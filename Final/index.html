@@ -55,14 +55,14 @@
                 }
 
                 if (status) {
-                    ligth += 35;
+                    light += 35;
 
                 }
                 else {
                     light -= 35;
                 }
 
-                cpf.request(`["grove_setColorRGB", 0, ${light}, ${light}, ${light}]`);
+                cpf.request(`["analogWrite", 6, ${light}]`);
             }
 
             setTimeout(loop, 1000);
