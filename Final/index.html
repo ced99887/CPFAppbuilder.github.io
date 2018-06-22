@@ -67,7 +67,8 @@
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 // A1 Grove壓電式振動傳感器 
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
+                // cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
             }
 
         }
