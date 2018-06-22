@@ -15,15 +15,24 @@
 <body>
     <h3>GAS</h3>
     <div id="gas"></div>
-    <h3>SHOCK</h3>
-    <div id="shock"></div>
+    <!-- <h3>SHOCK</h3>
+    <div id="shock"></div> -->
+    <h3>Axis</h3>
+    <div id="axis">
+        <span>X：</span><span id="axis-x"></span><br>
+        <span>Y：</span><span id="axis-y"></span><br>
+        <span>Z：</span><span id="axis-z"></span><br>
+    </div>
 
     <script>
         var gas; // 氣體
-        var shock; // 震動
+        // var shock; // 震動
         var gas_val = 1000; // 氣體濃度標準
-        var speed = 0;
-        var s = true;
+        // var speed = 0;
+        // var s = true;
+        var axis_x;
+        var axis_y;
+        var axis_z;
 
         setup();
 
@@ -31,11 +40,19 @@
             if (cpf) {
                 gas = cpf.get("a0");
                 // console.log(gas);
-                shock = cpf.get("a1");
+                // shock = cpf.get("a1");
                 // console.log(shock);
+                axis_x = cpf.get("adxl345", "x");
+                axis_y = cpf.get("adxl345", "y");
+                axis_z = cpf.get("adxl345", "z");
+                
 
                 document.getElementById("gas").innerHTML = gas;
-                document.getElementById("shock").innerHTML = shock;
+                // document.getElementById("shock").innerHTML = shock;
+                document.getElementById("axis-x").innerHTML = axis_x;
+                document.getElementById("axis-y").innerHTML = axis_y;
+                document.getElementById("axis-z").innerHTML = axis_z;
+                
 
                 console.log("gas_val：" + gas_val);
                 if (gas >= gas_val) {
@@ -45,30 +62,28 @@
                 }
                 // cpf.request(`["analogWrite", 6, 255]`);
 
-                if (s) {
-                    speed = speed + 51;
+                // if (s) {
+                //     speed = speed + 51;
 
-                    if (speed >= 255) {
-                        speed = 255;
-                        s = false;
-                    }
+                //     if (speed >= 255) {
+                //         speed = 255;
+                //         s = false;
+                //     }
 
-                    console.log(`${s} + ${speed} ++`);
-                }
-                else {
-                    speed = speed - 51;
+                //     console.log(`${s} + ${speed} ++`);
+                // }
+                // else {
+                //     speed = speed - 51;
 
-                    if (speed <= 0) {
-                        speed = 0;
-                        s = true;
-                    }
+                //     if (speed <= 0) {
+                //         speed = 0;
+                //         s = true;
+                //     }
 
-                    console.log(`${s} + ${speed} --`);
-                }
+                //     console.log(`${s} + ${speed} --`);
+                // }
 
-                // console.log(`${s} + ${speed}`);
-
-                cpf.request(`["analogWrite", 6, ${speed}]`);
+                // cpf.request(`["analogWrite", 6, ${speed}]`);
             }
 
             setTimeout(loop, 1000);
@@ -82,7 +97,7 @@
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 // A1 Grove壓電式振動傳感器 
-                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"], ["setPinMode", "digital", 6, "PWM"]');
+                cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
             }
 
         }
