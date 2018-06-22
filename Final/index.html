@@ -25,6 +25,7 @@
     </div>
 
     <script>
+        var time;
         var gas; // 氣體
         var gas_val = 1000; // 氣體濃度標準
         var axis_x;
@@ -34,6 +35,8 @@
         setup();
 
         function loop() {
+            clearTimeout(time);
+
             if (cpf) {
                 gas = cpf.get("a0");
                 axis_x = cpf.get("adxl345", "x");
@@ -56,7 +59,7 @@
                 }
             }
 
-            setTimeout(loop, 100);
+            time = setTimeout(loop, 100);
         }
         loop();
 
