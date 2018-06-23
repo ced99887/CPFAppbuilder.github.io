@@ -37,6 +37,16 @@
         var axis_y; // 三軸加速度計-Y軸
         var axis_z; // 三軸加速度計-Z軸
 
+        var axis_x_data = new Array[10];
+        var axis_y_data = new Array[10];
+        var axis_z_data = new Array[10];
+
+        for (var i = 0; i < 10; i++) {
+            axis_x_data.push(1600);
+            axis_y_data.push(1600);
+            axis_z_data.push(1600);
+        }
+
         setup();
 
         function loop() {
@@ -53,7 +63,19 @@
                     document.getElementById("axis-y").innerHTML = axis_y;
                     document.getElementById("axis-z").innerHTML = axis_z;
 
-                    console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
+                    axis_x_data.splice(0, 1);
+                    axis_x_data.push(axis_x);
+                    console.log("x = " + axis_x_data);
+
+                    axis_y_data.splice(0, 1);
+                    axis_y_data.push(axis_y);
+                    console.log("y = " + axis_y_data);
+
+                    axis_z_data.splice(0, 1);
+                    axis_z_data.push(axis_z);
+                    console.log("z = " + axis_z_data);
+                    
+                    // console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
 
                     // console.log("gas_val：" + gas_val);
                     if (gas >= gas_val) {
@@ -64,7 +86,7 @@
 
                 }
 
-                setTimeout(() => { 
+                setTimeout(() => {
                     console.log("Delay");
                 }, 100);
 
