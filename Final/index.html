@@ -41,6 +41,10 @@
         var axis_y_data = new Array(10);
         var axis_z_data = new Array(10);
 
+        var axis_x_avg;
+        var axis_y_avg;
+        var axis_z_avg;
+
         for (var i = 0; i < 10; i++) {
             axis_x_data.push(1600);
             axis_y_data.push(1600);
@@ -53,6 +57,10 @@
 
             while (true) {
                 if (cpf) {
+                    axis_x_avg = 0;
+                    axis_y_avg = 0;
+                    axis_z_avg = 0;
+
                     gas = cpf.get("a0");
                     document.getElementById("gas").innerHTML = gas;
 
@@ -74,7 +82,20 @@
                     axis_z_data.splice(0, 1);
                     axis_z_data.push(axis_z);
                     console.log("z = " + axis_z_data);
-                    
+
+                    for (var i = 0; i < 10; i++) {
+                        axis_x_avg += axis_x_data[i];
+                        axis_y_avg += axis_y_data[i];
+                        axis_z_avg += axis_z_data[i];
+                    }
+
+                    axis_x_avg /= 10;
+                    console.log("x_avg" + axis_x_avg);
+                    axis_y_avg /= 10;
+                    console.log("y_avg" + axis_y_avg);
+                    axis_z_avg /= 10;
+                    console.log("z_avg" + axis_z_avg);
+
                     // console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
 
                     // console.log("gas_val：" + gas_val);
