@@ -15,8 +15,7 @@
 <body>
     <h3>GAS</h3>
     <div id="gas"></div>
-    <!-- <h3>SHOCK</h3>
-    <div id="shock"></div> -->
+
     <h3>Axis</h3>
     <div id="axis">
         <span>X：</span>
@@ -33,9 +32,10 @@
     <script>
         var gas; // 氣體
         var gas_val = 1000; // 氣體濃度標準
-        var axis_x;
-        var axis_y;
-        var axis_z;
+
+        var axis_x; // 三軸加速度計-X軸
+        var axis_y; // 三軸加速度計-Y軸
+        var axis_z; // 三軸加速度計-Z軸
 
         setup();
 
@@ -44,12 +44,11 @@
             while (true) {
                 if (cpf) {
                     gas = cpf.get("a0");
+                    document.getElementById("gas").innerHTML = gas;
+
                     axis_x = cpf.get("adxl345", "x");
                     axis_y = cpf.get("adxl345", "y");
                     axis_z = cpf.get("adxl345", "z");
-
-
-                    document.getElementById("gas").innerHTML = gas;
                     document.getElementById("axis-x").innerHTML = axis_x;
                     document.getElementById("axis-y").innerHTML = axis_y;
                     document.getElementById("axis-z").innerHTML = axis_z;
@@ -64,6 +63,8 @@
                     }
 
                 }
+
+                setTimeout(() => { }, 100);
 
             }
 
