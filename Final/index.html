@@ -31,7 +31,6 @@
     </div>
 
     <script>
-        var time;
         var gas; // 氣體
         var gas_val = 1000; // 氣體濃度標準
         var axis_x;
@@ -41,7 +40,6 @@
         setup();
 
         function loop() {
-            clearTimeout(time);
 
             while (true) {
                 if (cpf) {
@@ -64,7 +62,7 @@
                             cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
                         }
                     }
-                    
+
                 }
 
             }
