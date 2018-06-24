@@ -85,17 +85,17 @@
                 axis_z_data.push(axis_z);
                 // console.log("z = " + axis_z_data);
 
-                for (var i = 0; i < 10; i++) {
-                    axis_x_avg += axis_x_data[i];
-                    axis_y_avg += axis_y_data[i];
-                    axis_z_avg += axis_z_data[i];
+                for (var i = 0; i < 10 - 1; i++) {
+                    axis_x_avg += Math.abs(axis_x_data[i] - axis_x_data[i + 1]);
+                    axis_y_avg += Math.abs(axis_y_data[i] - axis_y_data[i + 1]);
+                    axis_z_avg += Math.abs(axis_z_data[i] - axis_z_data[i + 1]);
                 }
 
-                axis_x_avg /= 10;
+                axis_x_avg /= 9;
                 // console.log("x_avg" + axis_x_avg);
-                axis_y_avg /= 10;
+                axis_y_avg /= 9;
                 // console.log("y_avg" + axis_y_avg);
-                axis_z_avg /= 10;
+                axis_z_avg /= 9;
                 // console.log("z_avg" + axis_z_avg);
                 // console.log(`x_avg=${axis_x_avg}，y_avg=${axis_y_avg}，z_avg${axis_z_avg}`);
 
@@ -121,7 +121,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本15");
+                console.log("版本16");
             }
 
             if (cpf) {
