@@ -57,7 +57,7 @@
 
         function loop() {
             if (cpf) {
-                console.log("版本4");
+                console.log("版本5");
             }
 
             while (true) {
@@ -113,7 +113,7 @@
                     //     }
                     // }
 
-                    setTimeout(() => {
+                    setTimeout(function () {
                         console.log("Delay");
                     }, 100);
 
@@ -126,11 +126,8 @@
         function setup() {
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
-                // A1 Grove壓電式振動傳感器 
-                // cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1,"INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
                 cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
             }
-
         }
 
     </script>
