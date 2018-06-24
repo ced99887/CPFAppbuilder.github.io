@@ -75,15 +75,12 @@
 
                 axis_x_data.splice(0, 1);
                 axis_x_data.push(axis_x);
-                // console.log("x = " + axis_x_data);
 
                 axis_y_data.splice(0, 1);
                 axis_y_data.push(axis_y);
-                // console.log("y = " + axis_y_data);
 
                 axis_z_data.splice(0, 1);
                 axis_z_data.push(axis_z);
-                // console.log("z = " + axis_z_data);
 
                 for (var i = 0; i < 10 - 1; i++) {
                     axis_x_avg += Math.abs(axis_x_data[i] - axis_x_data[i + 1]);
@@ -92,15 +89,13 @@
                 }
 
                 axis_x_avg /= 9;
-                // console.log("x_avg" + axis_x_avg);
                 axis_y_avg /= 9;
-                // console.log("y_avg" + axis_y_avg);
                 axis_z_avg /= 9;
-                // console.log("z_avg" + axis_z_avg);
-                // console.log(`x_avg=${axis_x_avg}，y_avg=${axis_y_avg}，z_avg${axis_z_avg}`);
 
-                // console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
-                
+                if (axis_x_avg > 10 || axis_y_avg > 10 || axis_z_avg > 10) {
+                    danger();
+                }
+
                 document.getElementById("axis-x-data").innerHTML = axis_x_avg;
                 document.getElementById("axis-y-data").innerHTML = axis_y_avg;
                 document.getElementById("axis-z-data").innerHTML = axis_z_avg;
@@ -112,7 +107,6 @@
                 }
 
                 setTimeout(loop, 100);
-                // sleep();
 
             }
 
@@ -121,7 +115,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本16");
+                console.log("版本17");
             }
 
             if (cpf) {
@@ -130,13 +124,22 @@
             }
         }
 
+        function danger() {
+            gas_val = 600;
+            sleep();
+            gas_val = 1000;
+        }
+
         function sleep() {
-            var delayTime = 1000;
             var starTime = new Date().getTime();
-            console.log("sleep");
             for (; ;) {
-                if ((new Date().getTime() - starTime) > delayTime) {
-                    console.log("sleep break");
+                if (gas >= gas_val) {
+                    for (var i = 0; i < 10; i++) {
+                        cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
+                    }
+                }
+
+                if ((new Date().getTime()) - starTime > 10) {
                     break;
                 }
             }
