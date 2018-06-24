@@ -56,9 +56,6 @@
 
 
         function loop() {
-            if (cpf) {
-                console.log("版本11");
-            }
 
             if (cpf) {
                 console.log("無窮迴圈");
@@ -77,21 +74,21 @@
                 document.getElementById("axis-y").innerHTML = axis_y;
                 document.getElementById("axis-z").innerHTML = axis_z;
 
-                axis_x_data.splice(0, 1);
-                axis_x_data.push(axis_x);
-                // console.log("x = " + axis_x_data);
+                // axis_x_data.splice(0, 1);
+                // axis_x_data.push(axis_x);
+                // // console.log("x = " + axis_x_data);
 
-                axis_y_data.splice(0, 1);
-                axis_y_data.push(axis_y);
-                // console.log("y = " + axis_y_data);
+                // axis_y_data.splice(0, 1);
+                // axis_y_data.push(axis_y);
+                // // console.log("y = " + axis_y_data);
 
-                axis_z_data.splice(0, 1);
-                axis_z_data.push(axis_z);
-                // console.log("z = " + axis_z_data);
+                // axis_z_data.splice(0, 1);
+                // axis_z_data.push(axis_z);
+                // // console.log("z = " + axis_z_data);
                 
-                document.getElementById("axis-x-data").innerHTML = axis_x_data;
-                document.getElementById("axis-y-data").innerHTML = axis_y_data;
-                document.getElementById("axis-z-data").innerHTML = axis_z_data;
+                // document.getElementById("axis-x-data").innerHTML = axis_x_data;
+                // document.getElementById("axis-y-data").innerHTML = axis_y_data;
+                // document.getElementById("axis-z-data").innerHTML = axis_z_data;
 
                 for (var i = 0; i < 10; i++) {
                     axis_x_avg += axis_x_data[i];
@@ -124,6 +121,10 @@
         loop();
 
         function setup() {
+            if (cpf) {
+                console.log("版本12");
+            }
+
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
