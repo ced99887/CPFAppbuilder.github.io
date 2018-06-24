@@ -94,8 +94,11 @@
                 axis_y_avg /= 9;
                 axis_z_avg /= 9;
 
-                if (axis_x_avg > 10 || axis_y_avg > 10 || axis_z_avg > 10) {
-                    danger();
+                if (axis_x_avg > 20 || axis_y_avg > 20 || axis_z_avg > 20) {
+                    gas_val = 600;
+                }
+                else {
+                    gas_val = 1000;
                 }
 
                 document.getElementById("gas-val").innerHTML = gas_val;
@@ -119,7 +122,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本18");
+                console.log("版本19");
             }
 
             if (cpf) {
@@ -128,27 +131,27 @@
             }
         }
 
-        function danger() {
-            console.log("危險");
-            gas_val = 600;
-            sleep();
-            gas_val = 1000;
-        }
+        // function danger() {
+        //     console.log("危險");
+        //     gas_val = 600;
+        //     sleep();
+        //     gas_val = 1000;
+        // }
 
-        function sleep() {
-            var starTime = new Date().getTime();
-            for (; ;) {
-                if (gas >= gas_val) {
-                    for (var i = 0; i < 10; i++) {
-                        cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
-                    }
-                }
+        // function sleep() {
+        //     var starTime = new Date().getTime();
+        //     for (; ;) {
+        //         if (gas >= gas_val) {
+        //             for (var i = 0; i < 10; i++) {
+        //                 cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
+        //             }
+        //         }
 
-                if ((new Date().getTime()) - starTime > 10) {
-                    break;
-                }
-            }
-        }
+        //         if ((new Date().getTime()) - starTime > 10) {
+        //             break;
+        //         }
+        //     }
+        // }
 
     </script>
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
