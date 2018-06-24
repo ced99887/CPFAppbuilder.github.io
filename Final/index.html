@@ -57,7 +57,7 @@
 
         function loop() {
             if (cpf) {
-                console.log("版本5");
+                console.log("版本6");
             }
 
             while (true) {
@@ -113,9 +113,7 @@
                     //     }
                     // }
 
-                    setTimeout(function () {
-                        console.log("Delay");
-                    }, 100);
+                    setTimeout(sleep, 100);
 
                 }
 
@@ -124,9 +122,29 @@
         }
 
         function setup() {
+            setTimeout(function () {
+                console.log("AA");
+            }, 1000);
+
+            setTimeout(function () {
+                console.log("BB");
+            }, 1000);
+
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
+            }
+        }
+
+        function sleep() {
+            var delayTime = 1000;
+            var starTime = new Date().getTime();
+            console.log("sleep");
+            for (; ;) {
+                if ((new Date().getTime() - starTime) > delayTime) {
+                    console.log("sleep break");
+                    break;
+                }
             }
         }
 
