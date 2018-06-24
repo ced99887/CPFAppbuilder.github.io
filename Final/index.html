@@ -44,9 +44,9 @@
         var axis_y_data = [];
         var axis_z_data = [];
 
-        var axis_x_avg;
-        var axis_y_avg;
-        var axis_z_avg;
+        var axis_x_avg = 0;
+        var axis_y_avg = 0;
+        var axis_z_avg = 0;
 
         for (var i = 0; i < 10; i++) {
             axis_x_data[i] = 1600;
@@ -61,9 +61,9 @@
 
             if (cpf) {
 
-                axis_x_avg = 0;
-                axis_y_avg = 0;
-                axis_z_avg = 0;
+                // axis_x_avg = 0;
+                // axis_y_avg = 0;
+                // axis_z_avg = 0;
 
                 gas = cpf.get("a0");
                 document.getElementById("gas").innerHTML = gas;
@@ -77,22 +77,29 @@
 
                 axis_x_data.splice(0, 1);
                 axis_x_data.push(axis_x);
+                axis_x_avg = Math.abs(axis_x_avg - Math.abs(axis_x_Data[0] - axis_x_data[1]) / 9);
+                axis_x_avg += Math.abs(axis_x_data[9] - axis_x_data[8]) / 9;
 
                 axis_y_data.splice(0, 1);
                 axis_y_data.push(axis_y);
+                axis_y_avg = Math.abs(axis_y_avg - Math.abs(axis_y_Data[0] - axis_y_data[1]) / 9);
+                axis_y_avg += Math.abs(axis_y_data[9] - axis_y_data[8]) / 9;
 
                 axis_z_data.splice(0, 1);
                 axis_z_data.push(axis_z);
+                axis_z_avg = Math.abs(axis_z_avg - Math.abs(axis_z_Data[0] - axis_z_data[1]) / 9);
+                axis_z_avg += Math.abs(axis_z_data[9] - axis_z_data[8]) / 9;
 
-                for (var i = 0; i < 10 - 1; i++) {
-                    axis_x_avg += Math.abs(axis_x_data[i] - axis_x_data[i + 1]);
-                    axis_y_avg += Math.abs(axis_y_data[i] - axis_y_data[i + 1]);
-                    axis_z_avg += Math.abs(axis_z_data[i] - axis_z_data[i + 1]);
-                }
 
-                axis_x_avg /= 9;
-                axis_y_avg /= 9;
-                axis_z_avg /= 9;
+                // for (var i = 0; i < 10 - 1; i++) {
+                //     axis_x_avg += Math.abs(axis_x_data[i] - axis_x_data[i + 1]);
+                //     axis_y_avg += Math.abs(axis_y_data[i] - axis_y_data[i + 1]);
+                //     axis_z_avg += Math.abs(axis_z_data[i] - axis_z_data[i + 1]);
+                // }
+
+                // axis_x_avg /= 9;
+                // axis_y_avg /= 9;
+                // axis_z_avg /= 9;
 
                 if (axis_x_avg > 20 || axis_y_avg > 20 || axis_z_avg > 20) {
                     gas_val = 600;
@@ -122,7 +129,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本19");
+                console.log("版本20");
             }
 
             if (cpf) {
