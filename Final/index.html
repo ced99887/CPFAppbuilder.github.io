@@ -58,61 +58,61 @@
         function loop() {
 
             // while (true) {
-                if (cpf) {
-                    axis_x_avg = 0;
-                    axis_y_avg = 0;
-                    axis_z_avg = 0;
+                // if (cpf) {
+                //     axis_x_avg = 0;
+                //     axis_y_avg = 0;
+                //     axis_z_avg = 0;
 
-                    gas = cpf.get("a0");
-                    document.getElementById("gas").innerHTML = gas;
+                //     gas = cpf.get("a0");
+                //     document.getElementById("gas").innerHTML = gas;
 
-                    axis_x = cpf.get("adxl345", "x");
-                    axis_y = cpf.get("adxl345", "y");
-                    axis_z = cpf.get("adxl345", "z");
-                    document.getElementById("axis-x").innerHTML = axis_x;
-                    document.getElementById("axis-y").innerHTML = axis_y;
-                    document.getElementById("axis-z").innerHTML = axis_z;
+                //     axis_x = cpf.get("adxl345", "x");
+                //     axis_y = cpf.get("adxl345", "y");
+                //     axis_z = cpf.get("adxl345", "z");
+                //     document.getElementById("axis-x").innerHTML = axis_x;
+                //     document.getElementById("axis-y").innerHTML = axis_y;
+                //     document.getElementById("axis-z").innerHTML = axis_z;
 
-                    axis_x_data.splice(0, 1);
-                    axis_x_data.push(axis_x);
-                    // console.log("x = " + axis_x_data);
+                //     axis_x_data.splice(0, 1);
+                //     axis_x_data.push(axis_x);
+                //     // console.log("x = " + axis_x_data);
 
-                    axis_y_data.splice(0, 1);
-                    axis_y_data.push(axis_y);
-                    // console.log("y = " + axis_y_data);
+                //     axis_y_data.splice(0, 1);
+                //     axis_y_data.push(axis_y);
+                //     // console.log("y = " + axis_y_data);
 
-                    axis_z_data.splice(0, 1);
-                    axis_z_data.push(axis_z);
-                    // console.log("z = " + axis_z_data);
+                //     axis_z_data.splice(0, 1);
+                //     axis_z_data.push(axis_z);
+                //     // console.log("z = " + axis_z_data);
 
-                    for (var i = 0; i < 10; i++) {
-                        axis_x_avg += axis_x_data[i];
-                        axis_y_avg += axis_y_data[i];
-                        axis_z_avg += axis_z_data[i];
-                    }
+                //     for (var i = 0; i < 10; i++) {
+                //         axis_x_avg += axis_x_data[i];
+                //         axis_y_avg += axis_y_data[i];
+                //         axis_z_avg += axis_z_data[i];
+                //     }
 
-                    axis_x_avg /= 10;
-                    // console.log("x_avg" + axis_x_avg);
-                    axis_y_avg /= 10;
-                    // console.log("y_avg" + axis_y_avg);
-                    axis_z_avg /= 10;
-                    // console.log("z_avg" + axis_z_avg);
-                    // console.log(`x_avg=${axis_x_avg}，y_avg=${axis_y_avg}，z_avg${axis_z_avg}`);
+                //     axis_x_avg /= 10;
+                //     // console.log("x_avg" + axis_x_avg);
+                //     axis_y_avg /= 10;
+                //     // console.log("y_avg" + axis_y_avg);
+                //     axis_z_avg /= 10;
+                //     // console.log("z_avg" + axis_z_avg);
+                //     // console.log(`x_avg=${axis_x_avg}，y_avg=${axis_y_avg}，z_avg${axis_z_avg}`);
 
-                    // console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
+                //     // console.log(`x=${axis_x}，y=${axis_y}，z=${axis_z}`);
 
-                    // console.log("gas_val：" + gas_val);
-                    if (gas >= gas_val) {
-                        for (var i = 0; i < 10; i++) {
-                            cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
-                        }
-                    }
+                //     // console.log("gas_val：" + gas_val);
+                //     if (gas >= gas_val) {
+                //         for (var i = 0; i < 10; i++) {
+                //             cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
+                //         }
+                //     }
 
-                    setTimeout(() => {
-                        console.log("Delay");
-                    }, 100);
+                //     setTimeout(() => {
+                //         console.log("Delay");
+                //     }, 100);
 
-                }
+                // }
 
             // }
 
