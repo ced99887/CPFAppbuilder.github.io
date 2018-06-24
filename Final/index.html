@@ -28,6 +28,8 @@
         <span id="axis-z"></span>
         <p id="axis-z-data"></p>
         <br>
+        <span>氣體標準：</span>
+        <span id="gas-val"></span>
     </div>
 
     <script>
@@ -96,6 +98,8 @@
                     danger();
                 }
 
+                document.getElementById("gas-val").innerHTML = gas_val;
+
                 document.getElementById("axis-x-data").innerHTML = axis_x_avg;
                 document.getElementById("axis-y-data").innerHTML = axis_y_avg;
                 document.getElementById("axis-z-data").innerHTML = axis_z_avg;
@@ -115,7 +119,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本17");
+                console.log("版本18");
             }
 
             if (cpf) {
@@ -125,6 +129,7 @@
         }
 
         function danger() {
+            console.log("危險");
             gas_val = 600;
             sleep();
             gas_val = 1000;
