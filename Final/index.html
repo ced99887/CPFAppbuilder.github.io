@@ -110,9 +110,9 @@
 
                 document.getElementById("gas-val").innerHTML = gas_val;
 
-                document.getElementById("axis-x-data").innerHTML = axis_x_avg;
-                document.getElementById("axis-y-data").innerHTML = axis_y_avg;
-                document.getElementById("axis-z-data").innerHTML = axis_z_avg;
+                document.getElementById("axis-x-data").innerHTML = axis_x_avg.toFixed(2);
+                document.getElementById("axis-y-data").innerHTML = axis_y_avg.toFixed(2);
+                document.getElementById("axis-z-data").innerHTML = axis_z_avg.toFixed(2);
 
                 if (gas >= gas_val) {
                     for (var i = 0; i < 10; i++) {
@@ -129,7 +129,7 @@
 
         function setup() {
             if (cpf) {
-                console.log("版本21");
+                console.log("版本22");
             }
 
             if (cpf) {
@@ -161,7 +161,6 @@
         // }
 
     </script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 </body>
 
 </html>
