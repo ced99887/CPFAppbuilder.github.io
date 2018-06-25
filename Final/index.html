@@ -5,59 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <title>指針溫度計</title>
 </head>
 
 <body>
-    <div class="container">
+    <aside class="player-card">
+        <div class="title">報喜不爆<span class="animation">憂</span>
+        </div>
         <div class="row">
             <div class="col">
-                <h3>GAS感測數值</h3>
-                <div class="form-control" id="gas">ss</div>
+                <section>
+                    <h2>瓦斯氣體標準值</h2>
+                    <ul class="list horizontal">
+                        <li>
+                            <span id="gas">NULL</span>
+                        </li>
+                    </ul>
+                </section>
             </div>
             <div class="col">
-                <h3>氣體標準：</h3>
-                <div id="gas-val" class="form-control">d</div>
+                <section>
+                    <h2>瓦斯目前數值</h2>
+                    <ul class="list horizontal">
+                        <li>
+                            <span id="gas-val">NULL</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <div class="rol">
+            <div class="col p-1">
+                <section>
+                    <h2>Axis感測數值</h2>
+                    <ul class="list horizontal m-0">
+                        <li>
+                            <h3>X軸</h3>
+                            <span id="axis-x">NULL</span>
+                        </li>
+                        <li>
+                            <h3>Y軸</h3>
+                            <span id="axis-y">NULL</span>
+                        </li>
+                        <li>
+                            <h3>Z軸</h3>
+                            <span id="axis-z">NULL</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col p-1">
+                <section>
+                    <h2>變化值</h2>
+                    <ul class="list horizontal ">
+                        <li>
+                            <h3>X軸</h3>
+                            <span id="axis-x-data">NULL</span>
+                        </li>
+                        <li>
+                            <h3>Y軸</h3>
+                            <span id="axis-y-data">NULL</span>
+                        </li>
+                        <li>
+                            <h3>Z軸</h3>
+                            <span id="axis-z-data">NULL</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </aside>
 
-            </div>
-        </div>
-        <br>
-        <div id="axis">
-            <h3>Axis感測數值</h3>
-            <div class="row">
-                <div class="col">
-                    <h4>X軸：</h4>
-                    <div id="axis-x" class="form-control"></div>
-                </div>
-                <div class="col">
-                    <h4>X軸變化：</h4>
-                    <div id="axis-x-data" class="form-control"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4>Y軸：</h4>
-                    <div id="axis-y" class="form-control"></div>
-                </div>
-                <div class="col">
-                    <h4>Y軸變化：</h4>
-                    <div id="axis-y-data" class="form-control"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4>Z軸：</h4>
-                    <div id="axis-z" class="form-control"></div>
-                </div>
-                <div class="col">
-                    <h4>Z軸變化：</h4>
-                    <div id="axis-z-data" class="form-control"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="overlay"></div>
 
 
     <script>
@@ -146,10 +167,6 @@
         loop();
 
         function setup() {
-            if (cpf) {
-                console.log("版本24");
-            }
-
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
                 // D6 蜂鳴器
