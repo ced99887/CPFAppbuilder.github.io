@@ -11,63 +11,92 @@
 </head>
 
 <body>
-    <h3>GAS</h3>
-    <div id="gas"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>GAS感測數值</h3>
+                <div class="form-control" id="gas">ss</div>
+            </div>
+            <div class="col">
+                <h3>氣體標準：</h3>
+                <div id="gas-val" class="form-control">d</div>
 
-    <h3>Axis</h3>
-    <div id="axis">
-        <span>X：</span>
-        <span id="axis-x"></span>
-        <p id="axis-x-data"></p>
+            </div>
+        </div>
         <br>
-        <span>Y：</span>
-        <span id="axis-y"></span>
-        <p id="axis-y-data"></p>
-        <br>
-        <span>Z：</span>
-        <span id="axis-z"></span>
-        <p id="axis-z-data"></p>
-        <br>
-        <span>氣體標準：</span>
-        <span id="gas-val"></span>
+        <div id="axis">
+            <h3>Axis感測數值</h3>
+            <div class="row">
+                <div class="col">
+                    <h4>X軸：</h4>
+                    <div id="axis-x" class="form-control"></div>
+                </div>
+                <div class="col">
+                    <h4>X軸變化：</h4>
+                    <div id="asix-x-data" class="form-control"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Y軸：</h4>
+                    <div id="axis-y" class="form-control"></div>
+                </div>
+                <div class="col">
+                    <h4>Y軸變化：</h4>
+                    <div id="asix-y-data" class="form-control"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Z軸：</h4>
+                    <div id="axis-z" class="form-control"></div>
+                </div>
+                <div class="col">
+                    <h4>Z軸變化：</h4>
+                    <div id="asix-z-data" class="form-control"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
+
     <script>
-        var gas; // 氣體
+        var gas; // 氣體資料
         var gas_val = 1000; // 氣體濃度標準
 
-        var axis_x; // 三軸加速度計-X軸
-        var axis_y; // 三軸加速度計-Y軸
-        var axis_z; // 三軸加速度計-Z軸
+        // 三軸加速度計資料
+        var axis_x; // X軸
+        var axis_y; // Y軸
+        var axis_z; // Z軸
 
-        var axis_x_data = [];
-        var axis_y_data = [];
-        var axis_z_data = [];
+        // 最新10筆資料
+        var axis_x_data = []; // X軸
+        var axis_y_data = []; // Y軸
+        var axis_z_data = []; // Z軸
 
-        var axis_x_avg = 0;
-        var axis_y_avg = 0;
-        var axis_z_avg = 0;
+        // 三軸平均數
+        var axis_x_avg = 0; // X軸
+        var axis_y_avg = 0; // Y軸
+        var axis_z_avg = 0; // Z軸
 
+        // 三軸陣列初始化
         for (var i = 0; i < 10; i++) {
             axis_x_data[i] = 1600;
             axis_y_data[i] = 1600;
             axis_z_data[i] = 1600;
         }
 
+        // 設定sensor腳位
         setup();
 
-
+        // 執行區塊
         function loop() {
-
             if (cpf) {
-
-                // axis_x_avg = 0;
-                // axis_y_avg = 0;
-                // axis_z_avg = 0;
-
+                // 感測氣體資料
                 gas = cpf.get("a0");
                 document.getElementById("gas").innerHTML = gas;
 
+                // 感測三軸資料
                 axis_x = cpf.get("adxl345", "x");
                 axis_y = cpf.get("adxl345", "y");
                 axis_z = cpf.get("adxl345", "z");
@@ -75,6 +104,7 @@
                 document.getElementById("axis-y").innerHTML = axis_y;
                 document.getElementById("axis-z").innerHTML = axis_z;
 
+                // 計算三軸變化
                 axis_x_data.splice(0, 1);
                 axis_x_data.push(axis_x);
                 axis_x_avg = Math.abs(axis_x_avg - Math.abs(axis_x_data[0] - axis_x_data[1]) / 9);
@@ -90,17 +120,12 @@
                 axis_z_avg = Math.abs(axis_z_avg - Math.abs(axis_z_data[0] - axis_z_data[1]) / 9);
                 axis_z_avg += Math.abs(axis_z_data[9] - axis_z_data[8]) / 9;
 
+                document.getElementById("gas-val").innerHTML = gas_val;
+                document.getElementById("axis-x-data").innerHTML = axis_x_avg.toFixed(2);
+                document.getElementById("axis-y-data").innerHTML = axis_y_avg.toFixed(2);
+                document.getElementById("axis-z-data").innerHTML = axis_z_avg.toFixed(2);
 
-                // for (var i = 0; i < 10 - 1; i++) {
-                //     axis_x_avg += Math.abs(axis_x_data[i] - axis_x_data[i + 1]);
-                //     axis_y_avg += Math.abs(axis_y_data[i] - axis_y_data[i + 1]);
-                //     axis_z_avg += Math.abs(axis_z_data[i] - axis_z_data[i + 1]);
-                // }
-
-                // axis_x_avg /= 9;
-                // axis_y_avg /= 9;
-                // axis_z_avg /= 9;
-
+                // 三軸變化幅度超過定值，則調整氣體感測標準
                 if (axis_x_avg > 20 || axis_y_avg > 20 || axis_z_avg > 20) {
                     gas_val = 600;
                 }
@@ -108,12 +133,7 @@
                     gas_val = 1000;
                 }
 
-                document.getElementById("gas-val").innerHTML = gas_val;
-
-                document.getElementById("axis-x-data").innerHTML = axis_x_avg.toFixed(2);
-                document.getElementById("axis-y-data").innerHTML = axis_y_avg.toFixed(2);
-                document.getElementById("axis-z-data").innerHTML = axis_z_avg.toFixed(2);
-
+                // 感測氣體超標啟動蜂鳴器
                 if (gas >= gas_val) {
                     for (var i = 0; i < 10; i++) {
                         cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
@@ -121,44 +141,22 @@
                 }
 
                 setTimeout(loop, 100);
-
             }
-
         }
         loop();
 
         function setup() {
             if (cpf) {
-                console.log("版本22");
+                console.log("版本23");
             }
 
             if (cpf) {
                 // A0 Grove-氣體傳感器(MQ5)
+                // D6 蜂鳴器
+                // adx1345 三軸加速度計
                 cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "digital", 6, "TONE"], ["grove_adxl345_init"]');
             }
         }
-
-        // function danger() {
-        //     console.log("危險");
-        //     gas_val = 600;
-        //     sleep();
-        //     gas_val = 1000;
-        // }
-
-        // function sleep() {
-        //     var starTime = new Date().getTime();
-        //     for (; ;) {
-        //         if (gas >= gas_val) {
-        //             for (var i = 0; i < 10; i++) {
-        //                 cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
-        //             }
-        //         }
-
-        //         if ((new Date().getTime()) - starTime > 10) {
-        //             break;
-        //         }
-        //     }
-        // }
 
     </script>
 </body>
