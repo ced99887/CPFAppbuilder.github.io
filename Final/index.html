@@ -157,16 +157,18 @@
 
                 // 晃動變化超過10蜂鳴器啟動
                 if (axis_x_avg > 10 || axis_y_avg > 10 || axis_z_avg > 10) {
-                    for (var i = 0; i < 10; i++) {
-                        cpf.request('["tone_play", 6, 784, 200], ["sleep", 50]');
-                    }
+                    // for (var i = 0; i < 10; i++) {
+                    //     cpf.request('["tone_play", 6, 784, 200], ["sleep", 50]');
+                    // }
+                    cpf.request('["tone_play", 6, 784, 200], ["sleep", 50]');
                 }
 
                 // 感測氣體超標啟動蜂鳴器
                 if (gas >= gas_val) {
-                    for (var i = 0; i < 10; i++) {
-                        cpf.request('["tone_play", 6, 1046, 200], ["sleep", 50]');
-                    }
+                    // for (var i = 0; i < 10; i++) {
+                    //     cpf.request('["tone_play", 6, 1046, 200], ["sleep", 50]');
+                    // }
+                    cpf.request('["tone_play", 6, 1046, 200], ["sleep", 50]');
                 }
 
                 setTimeout(loop, 100);
