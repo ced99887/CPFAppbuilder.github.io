@@ -12,7 +12,8 @@
 
 <body>
     <aside class="player-card">
-        <div class="title">報喜不爆<span class="animation">憂</span>
+        <div class="title">報喜不爆
+            <span class="animation">憂</span>
         </div>
         <div class="row">
             <div class="col">
@@ -147,17 +148,23 @@
                 document.getElementById("axis-z-data").innerHTML = axis_z_avg.toFixed(2);
 
                 // 三軸變化幅度超過定值，則調整氣體感測標準
-                if (axis_x_avg > 20 || axis_y_avg > 20 || axis_z_avg > 20) {
+                if (axis_x_avg > 15 || axis_y_avg > 15 || axis_z_avg > 15) {
                     gas_val = 600;
                 }
                 else {
                     gas_val = 1000;
                 }
 
+                if (axis_x_avg > 10 || axis_y_avg > 10 || axis_z_avg > 10) {
+                    for (var i = 0; i < 10; i++) {
+                        cpf.request('["tone_play", 6, 784, 200], ["sleep", 50]');
+                    }
+                }
+
                 // 感測氣體超標啟動蜂鳴器
                 if (gas >= gas_val) {
                     for (var i = 0; i < 10; i++) {
-                        cpf.request('["tone_play", 6, 784, 300], ["sleep", 200]');
+                        cpf.request('["tone_play", 6, 784, 200], ["sleep", 50]');
                     }
                 }
 
