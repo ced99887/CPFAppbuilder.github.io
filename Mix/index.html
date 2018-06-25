@@ -9,108 +9,127 @@
 </head>
 
 <body>
-    <h1>Control your fan</h1>
+    <!-- <h1>Control your fan</h1>
     <button id="clickbtn">呼叫AI</button>
     <br>
-    <p id="words">none</p>
+    <p id="words">none</p> -->
 
     <script>
-        var clickbtn = document.getElementById("clickbtn");
+        // var clickbtn = document.getElementById("clickbtn");
+        // setup();
+        // cpf.request('["analogWrite", 6, 0');
+
+        // clickbtn.addEventListener('click', function (event) {
+        //     cpf.initSpeechRecognition("cmn-Hant-TW");
+        //     console.log("按按鈕");
+        // });
+
+        // function GetRecognizeResult(Result, Type) {
+        //     if (Result.includes("好熱") || Result.includes("我知道妳熱")) {
+        //         document.getElementById("words").innerHTML = Result;
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", 1, 2);
+        //         for (i = 0; i < 255; i += 15) {
+        //             cpf.request(`["analogWrite", 6, ${i}]`);
+        //         }
+        //         // cpf.request(`["analogWrite", 6, 255]`);
+        //     }
+        //     else if (Result.includes("好冷") || Result.includes("如果妳冷") || Result.includes("關")) {
+        //         document.getElementById("words").innerHTML = "全部關掉";
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "全部關掉", 1, 1);
+        //         cpf.request('["analogWrite", 6, 0]');
+        //         cpf.request('["digitalWrite", 5, 0]');
+        //         cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
+        //     }
+
+        //     if (Result.includes("睡覺") || Result.includes("晚安")) {
+        //         document.getElementById("words").innerHTML = Result;
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關閉電燈開啟電扇開啟小夜燈", 1, 1);
+        //         console.log("晚安");
+        //         cpf.request('["digitalWrite", 5, 1]');
+        //         cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
+        //         for (i = 0; i <= 255; i += 15) {
+        //             cpf.request(`["analogWrite", 6, ${i}]`);
+        //         }
+        //     }
+        //     else if (Result.includes("起床") || Result.includes("早安")) {
+        //         document.getElementById("words").innerHTML = Result;
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開啟電燈關閉電扇關閉小夜燈", 1, 1);
+        //         console.log("早安");
+        //         cpf.request('["digitalWrite", 5, 0]');
+        //         cpf.request('["analogWrite", 6, 0]');
+        //         cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
+
+        //     }
+
+        //     if (Result.includes("開電扇")) {
+        //         var r = ((Math.floor(Math.random() * 10)) + 1);
+        //         console.log(r);
+        //         if (r % 2 == 0) {
+        //             document.getElementById("words").innerHTML = "美送開";
+        //             cpf.SetSpeech("On", "cmn-Hant-TW", "美送開", 1, 1);
+        //             console.log("美送開");
+        //             cpf.request(`["analogWrite", 6, 0]`);
+        //         }
+        //         else {
+        //             document.getElementById("words").innerHTML = "好啊";
+        //             cpf.SetSpeech("On", "cmn-Hant-TW", "好啊", 1, 1);
+        //             console.log("好啊");
+        //             for (i = 0; i < 255; i += 15) {
+        //                 cpf.request(`["analogWrite", 6, ${i}]`);
+        //             }
+        //         }
+        //     }
+        //     if (Result.includes("叫你開")) {
+        //         document.getElementById("words").innerHTML = "求我啊";
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "求我啊", 1, 1);
+        //     }
+        //     if (Result.includes("拜託")) {
+        //         document.getElementById("words").innerHTML = "不要";
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "不要", 1, 1);
+        //     }
+
+        //     if (Result.includes("開燈")) {
+        //         document.getElementById("words").innerHTML = "甚麼顏色";
+        //         cpf.SetSpeech("On", "cmn-Hant-TW", "甚麼顏色", 1, 1);
+        //     }
+        //     if (Result.includes("紅色")) {
+        //         document.getElementById("words").innerHTML = "紅色";
+        //         cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
+        //     }
+        //     else if (Result.includes("綠色")) {
+        //         document.getElementById("words").innerHTML = "綠色";
+        //         cpf.request('["grove_setColorRGB", 0, 0, 255, 0]');
+        //     }
+        //     else if (Result.includes("藍色")) {
+        //         document.getElementById("words").innerHTML = "藍色";
+        //         cpf.request('["grove_setColorRGB", 0, 0, 0, 255]');
+        //     }
+        // }
+
+        // function setup() {
+        //     if (cpf) {
+        //         cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 6, "PWM"], ["grove_rgblcd_begin", 16, 2],["grove_newChainableLED", 7, 8, 1], ["setPinMode", "digital", 5, "OUTPUT"]');
+        //         cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]');
+        //         cpf.request('["grove_rgblcd_clear"]');
+        //     }
+        // }
+
         setup();
-        cpf.request('["analogWrite", 6, 0');
 
-        clickbtn.addEventListener('click', function (event) {
-            cpf.initSpeechRecognition("cmn-Hant-TW");
-            console.log("按按鈕");
-        });
+        function loop() {
+            if (cpf) {
+                cpf.request('["grove_rgblcd_set_rgb", 0, 255, 255]');
+                cpf.request('["grove_rgblcd_clear"]');
+                cpf.request('["grove_rgblcd_print", 0, 1, "What the fucking man."]');
 
-        function GetRecognizeResult(Result, Type) {
-            if (Result.includes("好熱") || Result.includes("我知道妳熱")) {
-                document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開電扇了", 1, 2);
-                for (i = 0; i < 255; i += 15) {
-                    cpf.request(`["analogWrite", 6, ${i}]`);
-                }
-                // cpf.request(`["analogWrite", 6, 255]`);
-            }
-            else if (Result.includes("好冷") || Result.includes("如果妳冷") || Result.includes("關")) {
-                document.getElementById("words").innerHTML = "全部關掉";
-                cpf.SetSpeech("On", "cmn-Hant-TW", "全部關掉", 1, 1);
-                cpf.request('["analogWrite", 6, 0]');
-                cpf.request('["digitalWrite", 5, 0]');
-                cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
-            }
-
-            if (Result.includes("睡覺") || Result.includes("晚安")) {
-                document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您關閉電燈開啟電扇開啟小夜燈", 1, 1);
-                console.log("晚安");
-                cpf.request('["digitalWrite", 5, 1]');
-                cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');
-                for (i = 0; i <= 255; i += 15) {
-                    cpf.request(`["analogWrite", 6, ${i}]`);
-                }
-            }
-            else if (Result.includes("起床") || Result.includes("早安")) {
-                document.getElementById("words").innerHTML = Result;
-                cpf.SetSpeech("On", "cmn-Hant-TW", "以幫您開啟電燈關閉電扇關閉小夜燈", 1, 1);
-                console.log("早安");
-                cpf.request('["digitalWrite", 5, 0]');
-                cpf.request('["analogWrite", 6, 0]');
-                cpf.request('["grove_setColorRGB", 0, 255, 255, 255]');
-
-            }
-
-            if (Result.includes("開電扇")) {
-                var r = ((Math.floor(Math.random() * 10)) + 1);
-                console.log(r);
-                if (r % 2 == 0) {
-                    document.getElementById("words").innerHTML = "美送開";
-                    cpf.SetSpeech("On", "cmn-Hant-TW", "美送開", 1, 1);
-                    console.log("美送開");
-                    cpf.request(`["analogWrite", 6, 0]`);
-                }
-                else {
-                    document.getElementById("words").innerHTML = "好啊";
-                    cpf.SetSpeech("On", "cmn-Hant-TW", "好啊", 1, 1);
-                    console.log("好啊");
-                    for (i = 0; i < 255; i += 15) {
-                        cpf.request(`["analogWrite", 6, ${i}]`);
-                    }
-                }
-            }
-            if (Result.includes("叫你開")) {
-                document.getElementById("words").innerHTML = "求我啊";
-                cpf.SetSpeech("On", "cmn-Hant-TW", "求我啊", 1, 1);
-            }
-            if (Result.includes("拜託")) {
-                document.getElementById("words").innerHTML = "不要";
-                cpf.SetSpeech("On", "cmn-Hant-TW", "不要", 1, 1);
-            }
-
-            if (Result.includes("開燈")) {
-                document.getElementById("words").innerHTML = "甚麼顏色";
-                cpf.SetSpeech("On", "cmn-Hant-TW", "甚麼顏色", 1, 1);
-            }
-            if (Result.includes("紅色")) {
-                document.getElementById("words").innerHTML = "紅色";
-                cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
-            }
-            else if (Result.includes("綠色")) {
-                document.getElementById("words").innerHTML = "綠色";
-                cpf.request('["grove_setColorRGB", 0, 0, 255, 0]');
-            }
-            else if (Result.includes("藍色")) {
-                document.getElementById("words").innerHTML = "藍色";
-                cpf.request('["grove_setColorRGB", 0, 0, 0, 255]');
+                setTimeout(loop, 1000);
             }
         }
+        loop();
 
         function setup() {
             if (cpf) {
-                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 6, "PWM"], ["grove_rgblcd_begin", 16, 2],["grove_newChainableLED", 7, 8, 1], ["setPinMode", "digital", 5, "OUTPUT"]');
-                cpf.request('["grove_rgblcd_set_rgb", 255, 0, 0]');
-                cpf.request('["grove_rgblcd_clear"]');
+                cpf.setPinMode('["resetPin"], ["grove_rgblcd_begin", 16, 2]');
             }
         }
     </script>
