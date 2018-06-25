@@ -155,7 +155,7 @@
                     gas_val = 1000;
                 }
 
-                if ((axis_x_avg > 10 || axis_y_avg > 10 || axis_z_avg > 10) && (gas >= gas_val)) {
+                if ((axis_x_avg > 15 || axis_y_avg > 15 || axis_z_avg > 15) && (gas >= gas_val)) {
                     cpf.request('["tone_play", 6, 261, 200], ["sleep", 50]');
                 }
                 else {
@@ -198,6 +198,7 @@
 
         function setup() {
             if (cpf) {
+                console.log("版本30");
                 // A0 Grove-氣體傳感器(MQ5)
                 // D6 蜂鳴器
                 // adx1345 三軸加速度計
